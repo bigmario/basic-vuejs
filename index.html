@@ -16,26 +16,27 @@
             {
                 data() {
                     return {
-                        first_name: "Mario",
-                        last_name: "Castro",
-                        now: new Date,
+                        text: "Puerta Cerrada",
+                        open: false
                     };
                 },
                 computed: {
-                    fullName() {
-                        return `${this.first_name} ${this.last_name}`
-                    },
-                    today() {
-                        return this.now.toLocaleDateString()
+                    label() {
+                        return this.open ? "Cerrar" : "Abrir"
+                    }
+                },
+                watch: {
+                    open(value) {
+                        if (value) {
+                            this.text = "Puerta abierta"
+                        } else {
+                            this.text = "Puerta cerrada"
+                        }
                     }
                 },
                 template: `
-                    <div>
-                        {{ fullName }}
-                    </div>
-                    <div>
-                        {{ today }}
-                    </div>
+                    <div>{{ text }}</div>
+                    <button @click="open = !open">{{ label }}</buttton>
                 `
             }
         ).mount("#app");

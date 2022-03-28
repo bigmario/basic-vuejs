@@ -19,11 +19,19 @@
                         items: ["uno", "dos", "tres"]
                     }
                 },
+                methods: {
+                    remove(i) {
+                        const items = this.items.filter((el, index) => index != i)
+                        this.items = items
+                    }
+                },
                 template: `
                     <ul>
-                        <v-item v-for="item in items" v-bind:text="item">
-                            {{ item }}
-                        </v-item>
+                        <v-item 
+                            v-for="(item, i) in items" 
+                            v-bind:text="item"
+                            v-on:remove="remove(i)" 
+                        />
                     </ul>
                 `
             });
@@ -35,8 +43,13 @@
                     default: "texto Vacio"
                 }
             },
+            methods: {
+                rm() {
+                    this.$emit("remove")
+                }
+            },
             template: `
-                <li>{{text}}</li>
+                <li v-on:click="rm">{{text}}</li>
             `
         })
 

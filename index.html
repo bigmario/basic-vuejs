@@ -10,9 +10,7 @@
 
 <body>
     <script src="https://unpkg.com/vue@next"></script>
-    <div id="app">
-        <h1>{{changeText(text)}}</h1>
-    </div>
+    <div id="app"></div>
     <script>
         const vm = Vue.createApp(
             {
@@ -21,6 +19,11 @@
                         text: "Hola Vue"
                     }
                 },
+                template: `
+                    <div>
+                        <p v-text="changeText(text)"></p>
+                    </div>
+                `,
                 methods: {
                     changeText(text) {
                         return `${text.toUpperCase()} como estas??`

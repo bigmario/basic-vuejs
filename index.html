@@ -15,17 +15,11 @@
         const vm = Vue.createApp(
             {
                 data() {
-                    return {
-                        attr1: "src",
-                        attr2: "alt",
-                        img: "https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ"
-                    };
+                    return {};
                 },
-                template: `
-                <img v-bind:[attr1]="img" v-bind:[attr2]="'foto'">`
+                template: ``
             }
         ).mount("#app");
-        console.log(vm)
     </script>
 </body>
 

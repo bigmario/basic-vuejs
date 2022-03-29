@@ -18,35 +18,22 @@
                     text: "Hola Vue"
                 }
             },
-            provide() {
-                return { otroTexto: this.text }
-            },
             template: `
-            <div>{{text}}</div>
-            <otro />
+                <v-button ref="elemento" :label="text"></v-button>
             `
         });
 
-        app.component('otro', {
-            template: `
-            <tercer/>
-            `
-        })
-
-        app.component('tercer', {
-            inject: {
-                otroTexto: {
-                    from: this.provide
-                }
+        app.component("v-button", {
+            props: {
+                label: String
             },
             template: `
-            <div>
-                {{otroTexto}}
-            </div>
+                <button type="button">{{label}}</button>
             `
         })
 
         const vm = app.mount("#app");
+        console.log(vm.$props)
     </script>
 </body>
 
